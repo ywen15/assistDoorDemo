@@ -1,0 +1,12 @@
+div.user-select {
+  padding-top: 50px;
+}
+
+div.user-select div.user-type {
+  padding-top: 50px;
+  text-align: center;
+}
+
+div.user-select div.user-type img {
+  max-width: 60%;
+}

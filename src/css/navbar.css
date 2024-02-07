@@ -1,0 +1,5 @@
+header.navbar img {
+  max-height: 50px;
+  /* TODO: replace with proper vertical align */
+  margin-top: 3px;
+}

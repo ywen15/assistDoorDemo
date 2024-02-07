@@ -1,0 +1,11 @@
+header.footer {
+    top: auto !important;
+    bottom: 0;
+    position: fixed;
+}
+
+header.footer a {
+    color: ff1459;
+    font-weight: bold;
+    text-decoration: none;
+}

@@ -1,0 +1,15 @@
+div.school-search {
+  padding-top: 30px;
+}
+
+div.school-search div.filter {
+  padding: 10px;
+}
+
+div.search-button {
+  padding: 10px;
+}
+
+div.search-button button {
+  width: 100%;
+}
