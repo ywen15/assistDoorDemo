@@ -12,8 +12,8 @@ import {
   Button,
   TextField,
   Checkbox,
-  FormControlLabel, FormControl, FormLabel,
-  Link,
+  FormControlLabel, FormControl, FormLabel, InputLabel,
+  Select, MenuItem,
   RadioGroup, Radio,
   Autocomplete
 } from '@mui/material';
@@ -120,6 +120,18 @@ export default function Register(props) {
                 options={schoolList}
                 renderInput={(params) => <TextField {...params} label="学校名" />}
               />
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">学年</InputLabel>
+                <Select
+                  label="grade"
+                >
+                  <MenuItem value={1}>一年生</MenuItem>
+                  <MenuItem value={2}>二年生</MenuItem>
+                  <MenuItem value={3}>三年生</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel

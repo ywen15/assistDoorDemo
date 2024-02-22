@@ -37,7 +37,9 @@ export default function Chat(props) {
   /**
    *  Custom functions
    */
-
+  const menuClickHandler = (id) => {
+    navigate(`/chat/${id}`)
+  };
 
   /**
    *  Render the component
@@ -50,7 +52,7 @@ export default function Chat(props) {
             <ImageIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="沖縄ホテル観光専門学校" secondary="2024年2月5日" />
+        <ListItemText primary="沖縄ホテル観光専門学校" secondary="2024年2月5日" onClick={() => { menuClickHandler(1) }} />
       </ListItem>
       <ListItem>
         <ListItemAvatar>
@@ -58,7 +60,7 @@ export default function Chat(props) {
             <WorkIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="神戸理容美容専門学校" secondary="2024年1月21日" />
+        <ListItemText primary="神戸理容美容専門学校" secondary="2024年1月21日" onClick={() => { menuClickHandler(2) }} />
       </ListItem>
       <ListItem>
         <ListItemAvatar>
@@ -66,7 +68,7 @@ export default function Chat(props) {
             <BeachAccessIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="横浜ビューティー＆ブライダル専門学校" secondary="2024年1月21日" />
+        <ListItemText primary="横浜ビューティー＆ブライダル専門学校" secondary="2024年1月21日" onClick={() => { menuClickHandler(3) }} />
       </ListItem>
     </List>
   );

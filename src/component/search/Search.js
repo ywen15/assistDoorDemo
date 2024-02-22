@@ -11,15 +11,16 @@ import {
   Avatar,
   Button,
   TextField,
-  Checkbox,
   FormControlLabel,
   Link,
   Divider,
   Stack,
   Autocomplete,
-  Card, CardContent, CardMedia
+  Card, CardContent, CardMedia, Chip
 } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import SendIcon from '@mui/icons-material/Send';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 // import custom components
 import '../../css/search.css'
@@ -99,7 +100,7 @@ export default function Search(props) {
           <Card sx={{ display: 'flex' }}>
             <CardMedia
               component="img"
-              sx={{ width: 151 }}
+              sx={{ width: 70 }}
               image="/icons/school.svg"
               alt="XXX美容学校"
             />
@@ -109,9 +110,15 @@ export default function Search(props) {
                 <Typography component="div" variant="h5" textAlign="left">
                   旭川理容美容専門学校
                 </Typography>
-                <Typography variant="subtitle1" color="text.secondary" component="div">
-                  学校の説明文学校の説明文学校の説明文学校の説明文学校の説明文学校の説明文学校の説明文学校の説明文
-                </Typography>
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <Typography variant="body2">オープンキャンパス：</Typography>
+                  <Chip label="3/1" color="primary" variant="outlined"></Chip>
+                  <Chip label="3/4" color="primary" variant="outlined"></Chip>
+                </Stack>
+                <Stack direction="row" spacing={1} alignItems="right">
+                  <FavoriteBorderIcon />
+                  <SendIcon />
+                </Stack>
               </CardContent>
             </Box>
           </Card>
@@ -123,7 +130,7 @@ export default function Search(props) {
           <Card sx={{ display: 'flex' }}>
             <CardMedia
               component="img"
-              sx={{ width: 151 }}
+              sx={{ width: 70 }}
               image="/icons/school.svg"
               alt="XXX美容学校"
             />
@@ -133,9 +140,14 @@ export default function Search(props) {
                 <Typography component="div" variant="h5" textAlign="left">
                   北見美容専門学校
                 </Typography>
-                <Typography variant="subtitle1" color="text.secondary" component="div">
-                  学校の説明文学校の説明文学校の説明文学校の説明文学校の説明文学校の説明文学校の説明文学校の説明文
-                </Typography>
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <Typography variant="body2">オープンキャンパス：</Typography>
+                  <Chip label="3/2" color="primary" variant="outlined"></Chip>
+                </Stack>
+                <Stack direction="row" spacing={1} alignItems="right">
+                  <FavoriteIcon />
+                  <SendIcon />
+                </Stack>
               </CardContent>
             </Box>
           </Card>

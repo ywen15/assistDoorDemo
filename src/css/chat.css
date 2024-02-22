@@ -1,0 +1,13 @@
+div.chat-wrapper div.chat-header a {
+  width: 100%;
+}
+
+div.chat-tool {
+  bottom: 30px;
+  position: fixed;
+}
+
+div.chat-wrapper div.chat-tool div.msg-box {
+  margin: 0 auto;
+  width: 90%;
+}

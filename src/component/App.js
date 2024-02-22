@@ -23,6 +23,7 @@ import SchoolSearchPage from './search/Search';
 import SchoolInfoPage from './school/School';
 
 import ChatListPage from './chat/List';
+import ChatPage from './chat/Chat';
 
 // import custom css
 import '../css/common.css'
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/school/info" element={<SchoolInfoPage setIsLoading={setIsLoading} />} />
 
             <Route path="/chat" element={<ChatListPage setIsLoading={setIsLoading} />} />
+            <Route path="/chat/:id" element={<ChatPage setIsLoading={setIsLoading} />} />
 
             <Route path="/*" element={<TopPage setIsLoading={setIsLoading} />} />
           </Routes>
