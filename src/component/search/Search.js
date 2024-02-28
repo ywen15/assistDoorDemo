@@ -1,37 +1,41 @@
 // import React libraries
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // import third-party libraries
 import {
-  Container,
   Grid,
   Typography,
-  Box,
-  Avatar,
   Button,
   TextField,
-  FormControlLabel,
-  Link,
   Divider,
   Stack,
   Autocomplete,
-  Card, CardContent, CardMedia, Chip
+  Card, CardContent, CardMedia, Chip, CardActions, SvgIcon
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import SchoolIcon from '@mui/icons-material/School';
+import ShareIcon from '@mui/icons-material/Share';
+import LanguageIcon from '@mui/icons-material/Language';
 
 // import custom components
 import '../../css/search.css'
 
 // import custom CSS
 
+// import custom svgs
+import { ReactComponent as YTicon } from '../../svg/yt.svg'
+import { ReactComponent as Xicon } from '../../svg/x.svg'
+import { ReactComponent as IGicon } from '../../svg/ig.svg'
+import { ReactComponent as TKicon } from '../../svg/tk.svg'
+
 export default function Search(props) {
   /**
    *  React variables
    */
   const navigate = useNavigate();
+  const [showCriteria, setShowCriteria] = React.useState(false);
 
   /**
    *  React Effects
@@ -56,103 +60,149 @@ export default function Search(props) {
     <Grid className="school-search" container={true} justify="center">
       <Grid className="school-search-label" item={true} xs={12} textAlign="center">
         <Typography variant="h4">
-          美容学校検索
+          美容学校一覧
         </Typography>
       </Grid>
 
-      <Grid className="filter" item={true} xs={4}>
-        <Autocomplete
-          disablePortal
-          id="select-school"
-          options={schoolList}
-          renderInput={(params) => <TextField {...params} label="学校名" />}
-        />
-      </Grid>
-      <Grid className="filter" item={true} xs={4}>
-        <Autocomplete
-          disablePortal
-          id="select-type"
-          options={schoolType}
-          renderInput={(params) => <TextField {...params} label="種別" />}
-        />
-      </Grid>
-      <Grid className="filter" item={true} xs={4}>
-        <Autocomplete
-          disablePortal
-          id="select-city"
-          options={cityList}
-          renderInput={(params) => <TextField {...params} label="都道府県" />}
-        />
-      </Grid>
+      {
+        showCriteria ?
+          <></>
+          :
+          <Grid item={true} xs={12} textAlign="center">
+            <Button variant="text" onClick={() => { setShowCriteria(true) }}>絞り込み検索</Button>
+          </Grid>
+      }
 
-      <Grid className="search-button" item={true} xs={12} textAlign="center">
-        <Button size="large" variant="outlined">検索</Button>
-      </Grid>
+      {
+        showCriteria ?
+          <>
+
+            <Grid className="filter" item={true} xs={12}>
+              <Autocomplete
+                disablePortal
+                size="small"
+                options={schoolList}
+                renderInput={(params) => <TextField {...params} label="学校名" />}
+              />
+            </Grid>
+            <Grid className="filter" item={true} xs={6}>
+              <Autocomplete
+                disablePortal
+                size="small"
+                options={schoolType}
+                renderInput={(params) => <TextField {...params} label="ジャンル" />}
+              />
+            </Grid>
+            <Grid className="filter" item={true} xs={6}>
+              <Autocomplete
+                disablePortal
+                size="small"
+                options={cityList}
+                renderInput={(params) => <TextField {...params} label="都道府県" />}
+              />
+            </Grid>
+
+            <Grid className="search-button" item={true} xs={12} textAlign="center">
+              <Button size="large" variant="outlined">絞り込む</Button>
+            </Grid>
+          </>
+          :
+          <></>
+      }
 
       <Grid item={true} xs={12}>&nbsp;</Grid>
-      <Grid item={true} xs={12} >
-        <Divider variant="middle">検索結果</Divider>
-      </Grid>
-      <Grid item={true} xs={12}>&nbsp;</Grid>
 
-      <Grid item={true} xs={12} textAlign="center" sx={{ padding: "10px" }}>
-        <Link href="/school/info" underline="none">
-          <Card sx={{ display: 'flex' }}>
-            <CardMedia
-              component="img"
-              sx={{ width: 70 }}
-              image="/icons/school.svg"
-              alt="XXX美容学校"
-            />
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-
-              <CardContent sx={{ flex: '1 0 auto' }}>
-                <Typography component="div" variant="h5" textAlign="left">
+      <Grid item={true} xs={12} textAlign="left" sx={{ padding: "10px" }}>
+        <Card variant="outlined">
+          <CardContent>
+            <Stack direction="row" spacing={1} alignItems="center">
+              <img src="/logos/asahikawa.jpg" style={{ width: "70px", height: "70px" }} />
+              <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
+                <Typography component="div" variant="h6" textAlign="left">
                   旭川理容美容専門学校
                 </Typography>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <Typography variant="body2">オープンキャンパス：</Typography>
-                  <Chip label="3/1" color="primary" variant="outlined"></Chip>
-                  <Chip label="3/4" color="primary" variant="outlined"></Chip>
-                </Stack>
-                <Stack direction="row" spacing={1} alignItems="right">
-                  <FavoriteBorderIcon />
-                  <SendIcon />
-                </Stack>
-              </CardContent>
-            </Box>
-          </Card>
-        </Link>
+                <Button variant="text" component={Link} to="/school/info">詳しく見る</Button>
+              </Stack>
+            </Stack>
+
+            <Button variant="text" color="inherit" startIcon={<SchoolIcon />}>
+              オープンキャンパス日程
+            </Button>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Chip label="3/1" color="primary" variant="outlined"></Chip>
+              <Chip label="3/4" color="primary" variant="outlined"></Chip>
+              <Chip label="3/5" color="primary" variant="outlined"></Chip>
+            </Stack>
+
+            <Grid item={true} xs={12}>&nbsp;</Grid>
+
+            <Button variant="text" color="inherit" startIcon={<ShareIcon />}>
+              公式アカウント
+            </Button>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <SvgIcon component={YTicon} inheritViewBox />
+              <SvgIcon component={TKicon} inheritViewBox />
+              <SvgIcon component={IGicon} inheritViewBox />
+              <SvgIcon component={Xicon} inheritViewBox />
+              <LanguageIcon color="inherit" />
+            </Stack>
+
+          </CardContent>
+          <Divider />
+          <CardActions>
+            <Stack direction="row" spacing={2} sx={{ marginLeft: "7px" }}>
+              <FavoriteIcon color="primary" />
+              <SendIcon color="primary" onClick={() => navigate("/chat")} />
+            </Stack>
+          </CardActions>
+        </Card>
       </Grid>
 
-      <Grid item={true} xs={12} textAlign="center" sx={{ padding: "10px" }}>
-        <Link href="/school/info" underline="none">
-          <Card sx={{ display: 'flex' }}>
-            <CardMedia
-              component="img"
-              sx={{ width: 70 }}
-              image="/icons/school.svg"
-              alt="XXX美容学校"
-            />
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-
-              <CardContent sx={{ flex: '1 0 auto' }}>
-                <Typography component="div" variant="h5" textAlign="left">
+      <Grid item={true} xs={12} textAlign="left" sx={{ padding: "10px" }}>
+        <Card variant="outlined">
+          <CardContent>
+            <Stack direction="row" spacing={1} alignItems="center">
+              <img src="/logos/kitami.jpeg" style={{ width: "70px", height: "70px" }} />
+              <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
+                <Typography component="div" variant="h6" textAlign="left">
                   北見美容専門学校
                 </Typography>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <Typography variant="body2">オープンキャンパス：</Typography>
-                  <Chip label="3/2" color="primary" variant="outlined"></Chip>
-                </Stack>
-                <Stack direction="row" spacing={1} alignItems="right">
-                  <FavoriteIcon />
-                  <SendIcon />
-                </Stack>
-              </CardContent>
-            </Box>
-          </Card>
-        </Link>
+                <Button variant="text" component={Link} to="/school/info">詳しく見る</Button>
+              </Stack>
+            </Stack>
+
+            <Button variant="text" color="inherit" startIcon={<SchoolIcon />}>
+              オープンキャンパス日程
+            </Button>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Chip label="3/2" color="primary" variant="outlined"></Chip>
+            </Stack>
+
+            <Grid item={true} xs={12}>&nbsp;</Grid>
+
+            <Button variant="text" color="inherit" startIcon={<ShareIcon />}>
+              公式アカウント
+            </Button>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <SvgIcon component={Xicon} inheritViewBox />
+              <LanguageIcon color="inherit" />
+            </Stack>
+
+          </CardContent>
+          <Divider />
+          <CardActions>
+            <Stack direction="row" spacing={2} sx={{ marginLeft: "7px" }}>
+              <FavoriteIcon color="inherit" />
+              <SendIcon color="inherit" />
+            </Stack>
+          </CardActions>
+        </Card>
       </Grid>
+
+      <Grid item={true} xs={12}>&nbsp;</Grid>
+      <Grid item={true} xs={12}>&nbsp;</Grid>
+      <Grid item={true} xs={12}>&nbsp;</Grid>
+
 
     </Grid>
   );

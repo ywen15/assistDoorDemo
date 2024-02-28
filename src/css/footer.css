@@ -1,7 +1,11 @@
 header.footer {
+    /*
     top: auto !important;
-    bottom: 0;
-    position: fixed;
+position: fixed;
+bottom: 0;
+    */
+
+
 }
 
 header.footer a {

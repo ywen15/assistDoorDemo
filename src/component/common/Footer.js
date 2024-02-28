@@ -15,7 +15,7 @@ export default function Footer() {
    *  Render the component
    */
   return (
-    <AppBar className="footer" color="transparent">
+    <AppBar className="footer" position="static" color="transparent">
       <Toolbar variant="dence">
         <Grid container={true}>
           <Grid item={true} xs={12}>
